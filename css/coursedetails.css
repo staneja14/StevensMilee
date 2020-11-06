@@ -1,0 +1,110 @@
+.navbar-inverse {
+    background-color: #9D1535;
+}
+
+.b {
+    color: #ffffff;
+    font-size: 30px;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.container {
+    height: 100%;
+    align-content: left;
+}
+
+.image_outer_container {
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 50%;
+    position: relative;
+}
+
+.image_inner_container {
+    border-radius: 50%;
+    padding: 5px;
+    background: #833ab4;
+    background: -webkit-linear-gradient(to bottom, #fcb045, #fcb045, #fcb045);
+    background: linear-gradient(to bottom, #fcb045, #fcb045, #fcb045);
+}
+
+.image_inner_container img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 5px solid white;
+}
+
+.courseName {
+    font-size: 30px;
+    color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+}
+
+.profName {
+    font-size: 20px;
+    color: black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    margin-top: 10%;
+    font-style: italic;
+}
+
+.desc {
+    color: #808080;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    text-align: justify;
+}
+
+.commentName {
+    font-size: 20px;
+    color: #ff0000;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    margin-top: 35%;
+    font-style: italic;
+}
+
+.panel {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.panel.panel-default {
+    border: 1px solid #d4d4d4;
+    -webkit-box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-icon {
+    color: #484848;
+}
+
+.n {
+    font-size: 15px;
+    margin-top: 10%;
+}
+
+.s {
+    font-size: 15px;
+}
+.panel-footer {
+    padding: 30px 15px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}

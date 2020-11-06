@@ -1,0 +1,73 @@
+.navbar-inverse {
+    background-color: #9D1535;
+}
+
+.b {
+    color: #ffffff;
+    font-size: 30px;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.container {
+    height: 100%;
+    align-content: left;
+}
+
+.image_outer_container {
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 50%;
+    position: relative;
+}
+
+.image_inner_container {
+    border-radius: 50%;
+    padding: 5px;
+    background: #833ab4;
+    background: -webkit-linear-gradient(to bottom, #fcb045, #fcb045, #fcb045);
+    background: linear-gradient(to bottom, #fcb045, #fcb045, #fcb045);
+}
+
+.image_inner_container img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 5px solid white;
+}
+
+.courseName {
+    font-size: 30px;
+    color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    margin-top: 30%;
+}
+
+.profName {
+    font-size: 20px;
+    color: black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    margin-top: 10%;
+    font-style: italic;
+}
+
+.desc {
+    color: #808080;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    text-align: justify;
+}
+
+.commentName {
+    font-size: 20px;
+    color: #ff0000;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    margin-top: 35%;
+    font-style: italic;
+}

@@ -1,5 +1,10 @@
 package com.stevensportal.coursesreview.service.impl;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,20 +15,22 @@ import com.stevensportal.coursesreview.contract.response.CourseResponseDTO;
 import com.stevensportal.coursesreview.contract.response.CoursesResponseDTO;
 import com.stevensportal.coursesreview.contract.response.LoginResponseDTO;
 import com.stevensportal.coursesreview.contract.response.ProfessorResponseDTO;
+import com.stevensportal.coursesreview.contract.response.ReviewResponseDTO;
+import com.stevensportal.coursesreview.contract.response.ReviewsResponseDTO;
 import com.stevensportal.coursesreview.contract.response.StudentMajorCourseMappingDTO;
 import com.stevensportal.coursesreview.contract.response.StudentResponseDTO;
 import com.stevensportal.coursesreview.contract.response.base.ErrorDTO;
+import com.stevensportal.coursesreview.entity.Comment;
 import com.stevensportal.coursesreview.entity.Course;
 import com.stevensportal.coursesreview.entity.Major;
 import com.stevensportal.coursesreview.entity.Professor;
 import com.stevensportal.coursesreview.entity.Student;
 import com.stevensportal.coursesreview.enumeration.ErrorResponseEnum;
+import com.stevensportal.coursesreview.repository.CommentRepository;
 import com.stevensportal.coursesreview.repository.CourseRepository;
 import com.stevensportal.coursesreview.repository.MajorRepository;
 import com.stevensportal.coursesreview.repository.StudentRepository;
 import com.stevensportal.coursesreview.service.CoursesReviewService;
-
-import java.util.*;
 
 /**
  * @author staneja14
@@ -40,6 +47,9 @@ public class CoursesReviewServiceImpl implements CoursesReviewService {
 	
 	@Autowired
 	CourseRepository courseRepository;
+	
+	@Autowired
+	CommentRepository commentRepository;
 	
 	@Override
 	@Transactional(rollbackFor = Exception.class)
@@ -137,5 +147,62 @@ public class CoursesReviewServiceImpl implements CoursesReviewService {
 		}
 
 		return professorResponse;
+	}
+	
+	
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public ReviewsResponseDTO fetchReviews(Integer courseId, List<ErrorDTO> errorList) {
+
+		ReviewsResponseDTO reviewsResponse = new ReviewsResponseDTO();
+		List<ReviewResponseDTO> reviews = new ArrayList<>();
+		reviewsResponse.setReviews(reviews);
+		
+		boolean courseExists = courseRepository.existsById(courseId);
+		
+		if (!courseExists) {
+			errorList.add(new ErrorDTO(ErrorResponseEnum.COURSE_DOES_NOT_EXIST, String.valueOf(courseId)));
+		} else {
+			List<Comment> comments = commentRepository.findReviewsByCourseId(courseId);
+
+			if (CollectionUtils.isNotEmpty(comments)) {
+				for (Comment comment : comments) {
+					ReviewResponseDTO reviewResponse = new ReviewResponseDTO();
+					reviewResponse.setStudentId(comment.getStudentId());
+					reviewResponse.setDescription(comment.getDescription());
+
+					reviews.add(reviewResponse);
+				}
+			}
+		}
+		
+		return reviewsResponse;
+	}
+	
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public void postTheReview(int studentId, int courseId, String description, List<ErrorDTO> errorList) {
+
+		boolean studentExists = studentRepository.existsById(studentId);
+
+		if (!studentExists) {
+			errorList.add(new ErrorDTO(ErrorResponseEnum.STUDENT_DOES_NOT_EXIST, String.valueOf(studentId)));
+			return;
+		}
+
+		boolean courseExists = courseRepository.existsById(courseId);
+
+		if (!courseExists) {
+			errorList.add(new ErrorDTO(ErrorResponseEnum.COURSE_DOES_NOT_EXIST, String.valueOf(courseId)));
+			return;
+		}
+
+		Comment comment = new Comment();
+		comment.setCourseId(courseId);
+		comment.setStudentId(studentId);
+		comment.setDescription(description);
+		comment.setCreatedDate(new Date());
+		comment.setModifiedDate(new Date());
+		commentRepository.save(comment);
 	}
 }

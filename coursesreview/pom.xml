@@ -30,6 +30,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		
+		<!-- Hibernate Validation -->
+		<dependency> 
+	        <groupId>org.hibernate</groupId>
+	        <artifactId>hibernate-validator</artifactId>
+	        <version>6.0.13.Final</version>
+    	</dependency> 
+		
 
 		<!-- MySql Connector -->
 		<dependency>

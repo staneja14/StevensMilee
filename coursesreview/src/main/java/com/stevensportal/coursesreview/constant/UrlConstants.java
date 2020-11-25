@@ -11,5 +11,7 @@ public interface UrlConstants {
 	String STUDENT_URL = "/{studentId}/info"; 
 	String COURSES_URL = "/{studentId}/courses";
 	String PROFESSOR_URL = "/{courseId}/professor";
-	
+	String REVIEWS_URL = "/{courseId}/reviews";
+	String REVIEW_POST_URL = "/review";
+
 }

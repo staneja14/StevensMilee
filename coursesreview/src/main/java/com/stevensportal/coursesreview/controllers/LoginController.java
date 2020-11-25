@@ -37,7 +37,7 @@ public class LoginController {
 	CoursesReviewService coursesReviewService;
 	
 	@CrossOrigin
-	@ApiOperation(value = "Authenticate a user based on the emailId", notes = "Provide the id of the user if it exists in the database", response = ResponseDTO.class)
+ 	@ApiOperation(value = "Authenticate a user based on the emailId", notes = "Provide the id of the user if it exists in the database", response = ResponseDTO.class)
 	@PostMapping(value = UrlConstants.LOGIN_URL, produces = "application/json")
 	public ResponseDTO<LoginResponseDTO> authenticateUser(@RequestBody LoginRequestDTO loginRequest) {
 

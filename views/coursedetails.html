@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -11,68 +11,85 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
   <link href="/css/coursedetails.css" rel="stylesheet">
-   
+  <script src="/js/coursedetails.js"></script>
+  <style>
+    .btn-lg{
+        padding-right: 21px;
+        padding-left: 20px;
+        font-size: 20px;
+        margin-top: 10px;
+    }
+</style>
 </head>
 
-<body>
+<body ng-app="StevensMilee" ng-controller="CourseDetailsCtrl">
+  <div id="mydiv" ng-hide="!saved">
+    <img src="http://code.jquery.com/mobile/1.4.2/images/ajax-loader.gif" class="ajax-loader" />
+  </div>
+
   <!--Navbar-->
   <nav class="navbar navbar-inverse">
+    <button type="button" class="btn btn-info float-right btn-lg" ng-click="logoutUser();">
+      <span class="glyphicon glyphicon-log-out"></span> Log out
+    </button>
     <div class="container-fluid">
       <div class="navbar-header">
         <h4 class="b" href="#">Stevens Milee</h4>
+        
       </div>
-
     </div>
   </nav>
 
-  <!--Course section starts-->
-  <div class="col-md-4 col">
-    <div class="widget-container">
-      <div class="widget">
-        <div class="profile-card">
-          <div class="card-header">
-            <div class="header-avatar">
-              <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="anna">
-            </div>
-            <div class="header-name">
-              Course Name
-            </div>
+  
+
+  <div class="container">
+    <div class="col-md-6">
+      <div class="d-flex justify-content-left h-100">
+        <div class="image_outer_container">
+          <div class="green_icon"></div>
+          <div class="image_inner_container">
+            <img src="/images/top-10-books-every-college-student-read-1024x640.jpeg">
           </div>
-          <div class="card-body bg-info">
-            <div class="body-description">
-              <div class="row row_1">
-                <div class="col-md-12">Course Name: Fetch from backend</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <h4 class="courseName">Course Name: {{courseDetails.name}}</h4>
+    </div>
+
+    <!--Professor Information-->
+    <div class="col-md-6">
+      <h4 class="profName">Professor: <a href="professor.html">
+          <p class="desc">{{professorInfo.name}}
+        </a></p>
+      </h4>
+      <h4 class="profName">Teaching Mode: <p class="desc">{{courseDetails.teachingMode}}</p>
+      </h4>
+      <h4 class="profName">Course Description: <p class="desc">{{courseDetails.description}}</p>
+      </h4>
+    </div>
+
+    <!--Comments Section-->
+    <div class="container">
+      <div class="col-md -6">
+        <h4 class="commentName">Add comments:</h4>
+      </div>
+
+      <div class="container">
+        <div class="column">
+          <div class="col-md-8">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <input id="reviewField" type="text" class="form-control" placeholder="Your review?" ng-model="reviewDesc">
               </div>
-              <div class="row row_1">
-
-                <div class="col-md-12">Mode of Teaching: Fetch from backend</div>
-              </div>
-              <div class="row row_1">
-
-                <div class="col-md-12">Professor Name: Fetch from backend</div>
-              </div>
-              <div class="row row_1">
-                <div class="col-md-12">Rating:Fetch from backend</div>
-              </div>
-
-
-            </div>
-          </div>
-          <div class="card-footer">
-            <div class="footer-social">
-              <div class="row">
-                <div class="col-xs-3">
-
-                </div>
-                <div class="col-xs-3">
-
-                </div>
-                <div class="col-xs-3">
-
-                </div>
-                <div class="col-xs-3">
-
+              <div class="panel-footer">
+  
+  
+                <div class="pull-right">
+                  <button type="button" class="btn btn-success" ng-click="postReview();">Post</button>
                 </div>
               </div>
             </div>
@@ -80,14 +97,14 @@
         </div>
       </div>
     </div>
-  </div>
 
-
-
-
-  </div>
+    <div ng-repeat="review in reviews">
+      <div class="alert alert-primary n" role="alert">
+        {{review.description}}
+      </div>
+    </div>
 </body>
-</html>
+
 <!---JS files -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

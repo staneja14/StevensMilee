@@ -109,10 +109,11 @@ section .section-title {
 .frontside .card,
 .backside .card {
     min-height: 312px;
+    font-size: 14px;
 }
 
 .backside .card a {
-    font-size: 18px;
+    font-size: 20px;
     color: #007b5e !important;
 }
 
@@ -125,4 +126,31 @@ section .section-title {
     width: 120px;
     height: 120px;
     border-radius: 50%;
+}
+
+#mydiv {  
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:1000;
+    background-color:grey;
+    opacity: .8;
+ }
+
+.ajax-loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -32px; /* -1 * image width / 2 */
+    margin-top: -32px;  /* -1 * image height / 2 */
+    display: block;     
+}
+.btn-lg{
+    padding-right: 21px;
+    padding-left: 15px;
+    font-size: 40px;
+    margin-right: 50px;
+    margin-top: -30px;
 }

@@ -13,17 +13,29 @@
         integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="/css/professor.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="/js/professor.js"></script>
     <!--JS files-->
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
+    <style>
+        .btn-lg{
+            padding-right: 21px;
+            padding-left: 20px;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 
-<body>
+<body ng-app="StevensMilee" ng-controller="ProfessorCtrl">
     <!--Navbar-->
     <nav class="navbar navbar-inverse">
+        <button type="button" class="btn btn-info float-right btn-lg" ng-click="logoutUser();">
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+          </button>
         <div class="container-fluid">
             <div class="navbar-header">
                 <h4 class="b" href="#">Stevens Milee</h4>
@@ -42,7 +54,7 @@
                             <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="anna">
                         </div>
                         <div class="header-name">
-                            Professor Name
+                            <b>{{professorInfo.name}}</b>
                         </div>
                     </div>
                     <div class="card-body bg-info">
@@ -51,21 +63,22 @@
                                 <div class="col-md-12 col_1">Course Taught: </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12 col_2">Fetch from backend</div>
+                                <div class="col-md-12 col_2">{{courseTaught}}</div>
                             </div>
+                            <br>
                             <div class="row">
                                 <div class="col-md-12 col_1">Education: </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12 col_2">Fetch from backend</div>
+                                <div class="col-md-12 col_2">{{professorInfo.education}}</div>
                             </div>
-
+                            <br>
                             <div class="row">
                                 <div class="col-md-12 col_1">Rating: </div>
                             </div>
                             <div class="row">
 
-                                <div class="col-md-12 col_2">Fetch from backend</div>
+                                <div class="col-md-12 col_2">{{professorInfo.rating}}</div>
                             </div>
 
 
